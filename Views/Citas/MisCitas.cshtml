@@ -1,0 +1,39 @@
+@model List<Clinica.Models.CitaModel>
+
+<h2>Mis Citas</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Médico</th>
+            <th>Fecha</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cita in Model)
+        {
+            <tr>
+                <td>@cita.idCita</td>
+                <td>@cita.idMedico</td>
+                <td>@cita.fecha</td>
+                <td>@cita.horaInicio</td>
+                <td>@cita.horaFin</td>
+                <td>@cita.estado</td>
+                <td>
+                    @if (cita.estado != "Cancelada")
+                    {
+                        <a asp-action="Cancelar" asp-route-id="@cita.idCita">Cancelar</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Especialidades" class="btn btn-primary">Agendar nueva cita</a>
+<a asp-controller="Menu" asp-action="Index" class="btn btn-secondary">Atrás</a>

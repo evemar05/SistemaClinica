@@ -1,0 +1,98 @@
+@model List<Clinica.Models.FacturaModel>
+
+<div class="container mt-4">
+
+    <div class="card-clinica">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h2 class="titulo-clinica mb-0">
+                Facturación
+            </h2>
+
+            <div>
+
+                <a asp-action="Buscar"
+                   class="btn btn-clinica">
+                    Facturar una Cita
+                </a>
+
+                <a asp-controller="Menu"
+                   asp-action="Index"
+                   class="btn btn-secondary">
+                    Atrás
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-primary">
+
+                    <tr>
+                        <th>Id Factura</th>
+                        <th>Id Cita</th>
+                        <th>Servicio</th>
+                        <th>Precio</th>
+                        <th>IVA</th>
+                        <th>Total</th>
+                        <th>Estado de Pago</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var factura in Model)
+                    {
+                        <tr>
+
+                            <td>@factura.idFactura</td>
+
+                            <td>@factura.idCita</td>
+
+                            <td>@factura.servicio</td>
+
+                            <td>@factura.precio.ToString("C")</td>
+
+                            <td>@factura.iva.ToString("C")</td>
+
+                            <td>
+                                <strong>
+                                    @factura.total.ToString("C")
+                                </strong>
+                            </td>
+
+                            <td>
+
+                                @if (factura.estadoPago == "Pagado")
+                                {
+                                    <span class="badge bg-success">
+                                        Pagado
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        @factura.estadoPago
+                                    </span>
+                                }
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

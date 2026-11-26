@@ -1,0 +1,70 @@
+@model Clinica.Models.EmpleadoModel
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card-clinica">
+
+                <h2 class="titulo-clinica text-center mb-4">
+                    Eliminar Empleado
+                </h2>
+
+                <div class="alert alert-warning">
+
+                    <strong>Confirmación:</strong>
+
+                    <p class="mb-0 mt-2">
+                        Está a punto de eliminar el siguiente empleado.
+                    </p>
+
+                </div>
+
+                <div class="border rounded p-3 bg-light mb-4">
+
+                    <div class="mb-2">
+                        <strong>Identificación:</strong>
+                        @Model.identificacion
+                    </div>
+
+                    <div class="mb-2">
+                        <strong>Nombre:</strong>
+                        @Model.nombre
+                    </div>
+
+                    <div>
+                        <strong>Puesto:</strong>
+                        @Model.puesto
+                    </div>
+
+                </div>
+
+                <form method="post">
+
+                    <input asp-for="identificacion" type="hidden" />
+
+                    <div class="d-flex justify-content-between">
+
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary">
+                            Cancelar
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-danger">
+                            Confirmar Eliminación
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

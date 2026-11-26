@@ -1,0 +1,83 @@
+@model Clinica.Models.FacturaModel
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card-clinica">
+
+                <h2 class="titulo-clinica text-center mb-4">
+                    Confirmar Pago - Cita #@Model.idCita
+                </h2>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.Error
+                    </div>
+                }
+
+                <table class="table table-bordered align-middle">
+
+                    <tbody>
+
+                        <tr>
+                            <th style="width:35%">Servicio</th>
+                            <td>@Model.servicio</td>
+                        </tr>
+
+                        <tr>
+                            <th>Precio</th>
+                            <td>@Model.precio.ToString("C")</td>
+                        </tr>
+
+                        <tr>
+                            <th>IVA (13%)</th>
+                            <td>@Model.iva.ToString("C")</td>
+                        </tr>
+
+                        <tr class="table-primary">
+
+                            <th>Total a Pagar</th>
+
+                            <td>
+                                <strong>@Model.total.ToString("C")</strong>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                <form asp-action="Confirmar" method="post">
+
+                    <input asp-for="idCita" type="hidden" />
+                    <input asp-for="servicio" type="hidden" />
+                    <input asp-for="precio" type="hidden" />
+
+                    <div class="d-flex justify-content-between mt-4">
+
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary">
+                            Cancelar
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-success">
+                            Confirmar y Registrar Pago
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

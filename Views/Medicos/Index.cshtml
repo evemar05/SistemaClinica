@@ -1,0 +1,111 @@
+﻿@model List<Clinica.Models.MedicoModel>
+
+<div class="container mt-4">
+
+    <div class="card-clinica">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h2 class="titulo-clinica mb-0">
+                Médicos
+            </h2>
+
+            <div>
+
+                <a asp-action="Crear"
+                   class="btn btn-clinica">
+                    Nuevo Médico
+                </a>
+
+                <a asp-controller="Menu"
+                   asp-action="Index"
+                   class="btn btn-secondary">
+                    Atrás
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-primary">
+
+                    <tr>
+
+                        <th>Identificación</th>
+
+                        <th>Nombre</th>
+
+                        <th>Teléfono</th>
+
+                        <th>Correo</th>
+
+                        <th>Especialidad</th>
+
+                        <th class="text-center">Acciones</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var medico in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @medico.identificacion
+                            </td>
+
+                            <td>
+                                @medico.nombre
+                            </td>
+
+                            <td>
+                                @medico.telefono
+                            </td>
+
+                            <td>
+                                @medico.email
+                            </td>
+
+                            <td>
+                                @medico.especialidad
+                            </td>
+
+                            <td>
+
+                                <div class="d-flex gap-2 justify-content-center">
+
+                                    <a asp-action="Editar"
+                                       asp-route-id="@medico.identificacion"
+                                       class="btn btn-sm btn-outline-primary">
+                                        Editar
+                                    </a>
+
+                                    <a asp-action="Eliminar"
+                                       asp-route-id="@medico.identificacion"
+                                       class="btn btn-sm btn-outline-danger">
+                                        Eliminar
+                                    </a>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

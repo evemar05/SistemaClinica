@@ -1,0 +1,133 @@
+﻿@model Clinica.Models.ClientesModel
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card-clinica">
+
+                <h2 class="titulo-clinica text-center mb-4">
+                     Editar Cliente
+                </h2>
+
+                <form method="post">
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label asp-for="identificacion" class="form-label">
+                                Identificación
+                            </label>
+
+                            <input asp-for="identificacion"
+                                   class="form-control bg-light"
+                                   readonly />
+
+                            <small class="text-muted">
+                                La identificación no puede modificarse.
+                            </small>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label asp-for="nacionalidad" class="form-label">
+                                Nacionalidad
+                            </label>
+
+                            <input asp-for="nacionalidad"
+                                   class="form-control" />
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3">
+
+                            <label asp-for="nombre" class="form-label">
+                                Nombre
+                            </label>
+
+                            <input asp-for="nombre"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+
+                            <label asp-for="primerApellido" class="form-label">
+                                Primer Apellido
+                            </label>
+
+                            <input asp-for="primerApellido"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+
+                            <label asp-for="segundoApellido" class="form-label">
+                                Segundo Apellido
+                            </label>
+
+                            <input asp-for="segundoApellido"
+                                   class="form-control" />
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label asp-for="telefono" class="form-label">
+                                Teléfono
+                            </label>
+
+                            <input asp-for="telefono"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label asp-for="email" class="form-label">
+                                Correo Electrónico
+                            </label>
+
+                            <input asp-for="email"
+                                   class="form-control" />
+
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary">
+                            Cancelar
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-clinica">
+                            Guardar Cambios
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

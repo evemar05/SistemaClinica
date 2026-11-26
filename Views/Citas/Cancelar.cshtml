@@ -1,0 +1,23 @@
+@model Clinica.Models.CitaModel
+
+<h2>Cancelar Cita</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<div class="alert alert-warning">
+    ¿Desea cancelar la cita #@Model.idCita del @Model.fecha a las @Model.horaInicio?
+</div>
+
+<form method="post">
+    <input asp-for="idCita" type="hidden" />
+    <input asp-for="idCliente" type="hidden" />
+    <button type="submit" class="btn btn-danger">Confirmar Cancelación</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>
+
+<p><small>Solo se puede cancelar con al menos 2 días de anticipación a la fecha de la cita.</small></p>

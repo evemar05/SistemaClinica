@@ -1,0 +1,86 @@
+@model Clinica.Models.FacturaModel
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card-clinica">
+
+                <h2 class="titulo-clinica text-center mb-4">
+                    Esta cita ya fue facturada
+                </h2>
+
+                <div class="alert alert-info">
+                    La cita seleccionada ya cuenta con una factura registrada.
+                </div>
+
+                <table class="table table-bordered align-middle">
+
+                    <tbody>
+
+                        <tr>
+                            <th style="width:35%">Servicio</th>
+                            <td>@Model.servicio</td>
+                        </tr>
+
+                        <tr>
+                            <th>Precio</th>
+                            <td>@Model.precio.ToString("C")</td>
+                        </tr>
+
+                        <tr>
+                            <th>IVA</th>
+                            <td>@Model.iva.ToString("C")</td>
+                        </tr>
+
+                        <tr class="table-primary">
+                            <th>Total</th>
+                            <td>
+                                <strong>
+                                    @Model.total.ToString("C")
+                                </strong>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Estado de Pago</th>
+                            <td>
+
+                                @if (Model.estadoPago == "Pagado")
+                                {
+                                    <span class="badge bg-success">
+                                        Pagado
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        @Model.estadoPago
+                                    </span>
+                                }
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="mt-4 text-end">
+
+                    <a asp-action="Index"
+                       class="btn btn-secondary">
+                        Volver
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

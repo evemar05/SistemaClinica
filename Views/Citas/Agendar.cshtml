@@ -1,0 +1,37 @@
+@model Clinica.Models.CitaModel
+
+<h2>Agendar Cita</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+<form method="post">
+    <div class="mb-3">
+        <label>Identificación del Médico</label>
+        <input asp-for="idMedico" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Fecha (AAAA-MM-DD)</label>
+        <input asp-for="fecha" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Hora Inicio (HH:MM)</label>
+        <input asp-for="horaInicio" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Hora Fin (HH:MM)</label>
+        <input asp-for="horaFin" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Agendar</button>
+    <button type="submit" class="btn btn-success">Agendar</button>
+</form>
+
+<p><small>Revise la disponibilidad del médico antes de agendar.</small></p>
+
+<a asp-action="Especialidades" class="btn btn-secondary">Atrás</a>

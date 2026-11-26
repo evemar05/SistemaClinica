@@ -1,0 +1,70 @@
+@model Clinica.Models.EspecialidadModel
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card-clinica">
+
+                <h2 class="titulo-clinica text-center mb-4">
+                    Editar Especialidad
+                </h2>
+
+                <form method="post">
+
+                    <div class="mb-3">
+
+                        <label asp-for="nombre"
+                               class="form-label">
+                            Nombre
+                        </label>
+
+                        <input asp-for="nombre"
+                               class="form-control bg-light"
+                               readonly />
+
+                        <small class="text-muted">
+                            El nombre de la especialidad no puede modificarse.
+                        </small>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label asp-for="descripcion"
+                               class="form-label">
+                            Descripción
+                        </label>
+
+                        <textarea asp-for="descripcion"
+                                  class="form-control"
+                                  rows="4">
+                        </textarea>
+
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary">
+                            Cancelar
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-clinica">
+                            Guardar Cambios
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

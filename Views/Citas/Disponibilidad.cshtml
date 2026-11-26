@@ -1,0 +1,64 @@
+@model Clinica.Models.DisponibilidadSemanaModel
+
+<h2>Disponibilidad - Médico @ViewBag.IdMedico</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+@if (Model.horario != null)
+{
+    <p>Semana del @Model.inicioSemana al @Model.finSemana</p>
+
+    <p>
+        <a asp-action="Disponibilidad" asp-route-idMedico="@ViewBag.IdMedico" asp-route-fecha="@DateTime.Parse((string)ViewBag.Fecha).AddDays(-7).ToString("yyyy-MM-dd")">« Semana anterior</a>
+        |
+        <a asp-action="Disponibilidad" asp-route-idMedico="@ViewBag.IdMedico" asp-route-fecha="@DateTime.Parse((string)ViewBag.Fecha).AddDays(7).ToString("yyyy-MM-dd")">Semana siguiente »</a>
+    </p>
+
+    <h4>Horario del médico</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Día</th>
+                <th>Hora Inicio</th>
+                <th>Hora Fin</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var h in Model.horario)
+            {
+                <tr>
+                    <td>@h.diaSemana</td>
+                    <td>@h.horaInicio</td>
+                    <td>@h.horaFin</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h4>Horas ya ocupadas esta semana</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var o in Model.ocupadas)
+            {
+                <tr>
+                    <td>@o.fecha</td>
+                    <td>@o.horaInicio</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="Agendar" asp-route-idMedico="@ViewBag.IdMedico" asp-route-fecha="@ViewBag.Fecha" class="btn btn-primary">Agendar cita con este médico</a>
+}
+
+<br /><br />
+<a asp-action="Especialidades" class="btn btn-secondary">Atrás</a>

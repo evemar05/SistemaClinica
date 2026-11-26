@@ -1,0 +1,57 @@
+﻿@model Clinica.Models.LoginModelo
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+
+            <div class="card shadow">
+                <div class="card-body">
+
+                    <h3 class="text-center mb-4">
+                        Iniciar Sesión
+                    </h3>
+
+                    <form method="post">
+
+                        <div class="mb-3">
+                            <label asp-for="Usuario" class="form-label">
+                                Usuario
+                            </label>
+                            <input asp-for="Usuario" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">
+                                Contraseña
+                            </label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            Ingresar
+                        </button>
+
+                    </form>
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger mt-3">
+                            @ViewBag.Error
+                        </div>
+                    }
+
+                    <hr />
+
+                    <div class="text-center">
+                        <a asp-action="Registro">
+                            ¿Nuevo cliente? Regístrese aquí
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+`

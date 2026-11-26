@@ -1,0 +1,27 @@
+@model List<Clinica.Models.EspecialidadModel>
+
+<h2>Médicos por Especialidad</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Especialidad</th>
+            <th>Descripción</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var especialidad in Model)
+        {
+            <tr>
+                <td>@especialidad.nombre</td>
+                <td>@especialidad.descripcion</td>
+                <td>
+                    <a asp-action="MedicosPorEspecialidad" asp-route-especialidad="@especialidad.nombre">Ver médicos</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Menu" asp-action="Index" class="btn btn-secondary">Atrás</a>

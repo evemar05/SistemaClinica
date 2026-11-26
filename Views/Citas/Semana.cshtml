@@ -1,0 +1,49 @@
+@model Clinica.Models.HorarioSemanaModel
+
+<h2>Horario Semanal - Médico @ViewBag.IdMedico</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+@if (Model.citas != null)
+{
+    <p>Semana del @Model.inicioSemana al @Model.finSemana</p>
+
+    <p>
+        <a asp-action="Semana" asp-route-idMedico="@ViewBag.IdMedico" asp-route-fecha="@DateTime.Parse((string)ViewBag.Fecha).AddDays(-7).ToString("yyyy-MM-dd")">« Semana anterior</a>
+        |
+        <a asp-action="Semana" asp-route-idMedico="@ViewBag.IdMedico" asp-route-fecha="@DateTime.Parse((string)ViewBag.Fecha).AddDays(7).ToString("yyyy-MM-dd")">Semana siguiente »</a>
+    </p>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora Inicio</th>
+                <th>Hora Fin</th>
+                <th>Estado</th>
+                <th>Cliente</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cita in Model.citas)
+            {
+                <tr>
+                    <td>@cita.fecha</td>
+                    <td>@cita.horaInicio</td>
+                    <td>@cita.horaFin</td>
+                    <td>@cita.estado</td>
+                    <td>@cita.nombreCliente (@cita.identificacionCliente)</td>
+                    <td>@cita.telefonoCliente</td>
+                    <td>@cita.emailCliente</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="SemanaBuscar" class="btn btn-secondary">Volver a la búsqueda</a>

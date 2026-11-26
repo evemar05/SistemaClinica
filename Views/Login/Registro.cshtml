@@ -1,0 +1,145 @@
+@model Clinica.Models.ClientesModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-8 col-lg-7">
+
+            <div class="card-clinica">
+
+                <h2 class="titulo-clinica text-center mb-4">
+                     Registro de Nuevo Cliente
+                </h2>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.Error
+                    </div>
+                }
+
+                <form method="post">
+
+                    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="identificacion" class="form-label">
+                                Identificación
+                            </label>
+                            <input asp-for="identificacion" class="form-control" />
+                            <span asp-validation-for="identificacion" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="nacionalidad" class="form-label">
+                                Nacionalidad
+                            </label>
+                            <input asp-for="nacionalidad" class="form-control" />
+                            <span asp-validation-for="nacionalidad" class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="nombre" class="form-label">
+                                Nombre
+                            </label>
+                            <input asp-for="nombre" class="form-control" />
+                            <span asp-validation-for="nombre" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="primerApellido" class="form-label">
+                                Primer Apellido
+                            </label>
+                            <input asp-for="primerApellido" class="form-control" />
+                            <span asp-validation-for="primerApellido" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="segundoApellido" class="form-label">
+                                Segundo Apellido
+                            </label>
+                            <input asp-for="segundoApellido" class="form-control" />
+                            <span asp-validation-for="segundoApellido" class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="telefono" class="form-label">
+                                Teléfono
+                            </label>
+                            <input asp-for="telefono" class="form-control" />
+                            <span asp-validation-for="telefono" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="email" class="form-label">
+                                Correo Electrónico
+                            </label>
+                            <input asp-for="email" class="form-control" />
+                            <span asp-validation-for="email" class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <hr />
+
+                    <h5 class="mb-3 text-primary">
+                        Datos de acceso
+                    </h5>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="usuario" class="form-label">
+                                Usuario
+                            </label>
+                            <input asp-for="usuario" class="form-control" />
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="password" class="form-label">
+                                Contraseña
+                            </label>
+                            <input asp-for="password"
+                                   type="password"
+                                   class="form-control" />
+                        </div>
+
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+
+                        <button type="submit" class="btn btn-clinica">
+                            Registrarme
+                        </button>
+
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            Volver al Login
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
